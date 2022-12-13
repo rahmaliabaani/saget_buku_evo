@@ -21,21 +21,18 @@
     <section>
       <div class="container mt-5">
         <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="..." class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-5">
+            <h1>Rekomendasi Buku</h1>
+            @foreach ($posts as $post)
+              <article class="mb-5">
+                <img src="https://source.unsplash.com/500x400/?{{ $post->kategori->nama }}" class="mb-4" alt="">
+                <h2>
+                  <a href="/buku/{{ $post->slug }}" class="text-decoration-none">{{ $post->judul }}</a>
+                </h2>
+                <h6>Dari. <a href="/penulis/{{ $post->penulis->username }}" class="text-decoration-none">{{ $post->penulis->name }}</a> | <a href="/kategori/{{ $post->kategori->slug }}" class="text-decoration-none">{{ $post->kategori->nama }}</a></h6>
+                {{ $post->kutipan }}
+              </article>
+            @endforeach   
           </div>
         </div>
       </div>
@@ -43,4 +40,4 @@
 
     {{-- Hak Cipta --}}
     <footer></footer>
-@endsection
+@endsection 
