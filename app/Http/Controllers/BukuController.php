@@ -12,8 +12,8 @@ class BukuController extends Controller
         return view('buku', [
             "title" => 'Semua Buku',
             "active" => 'buku',
-            // "posts" => Buku::latest()->get() ini kalo buku yg pertama mau dijadiin hero post
-            "posts" => Buku::all()
+            // "buku" => Buku::latest()->get() ini kalo buku yg pertama mau dijadiin hero post
+            "buku" => Buku::latest()->filter(request(['search']))->get()
         ]);
     }
 

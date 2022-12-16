@@ -3,20 +3,40 @@
 
 @section('container')
 <h1>{{ $title }}</h1>
-    @foreach ($posts as $post)
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form action="/buku">
+        <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
+        <button class="btn btn-danger" type="submit">Search</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+@if ($buku->count())
+     @foreach ($buku as $bk)
         <article class="mb-5 border-bottom pb-3">
-            <img src="https://source.unsplash.com/500x400/?{{ $post->kategori->nama }}" class="mb-4" alt="">
+            <img src="https://source.unsplash.com/500x400/?{{ $bk->kategori->nama }}" class="mb-4" alt="">
 
             <h2>
-                <a href="/buku/{{ $post->slug }}" class="text-decoration-none">{{ $post->judul }}</a>
+                <a href="/buku/{{ $bk->slug }}" class="text-decoration-none">{{ $bk->judul }}</a>
             </h2>
 
-            <h6>Dari. <a href="/penulis/{{ $post->penulis->username }}" class="text-decoration-none">{{ $post->penulis->name }}</a> | <a href="/kategori/{{ $post->kategori->slug }}" class="text-decoration-none">{{ $post->kategori->nama }}</a></h6>
+            <h6>Dari. <a href="/penulis/{{ $bk->penulis->username }}" class="text-decoration-none">{{ $bk->penulis->name }}</a> | <a href="/kategori/{{ $bk->kategori->slug }}" class="text-decoration-none">{{ $bk->kategori->nama }}</a></h6>
 
-            <p>{{ $post->kutipan }}</p>
+            <p>{{ $bk->kutipan }}</p>
             
-            <a href="/buku/{{ $post->slug }}" class="text-decoration-none">Baca lebih banyak..</a>
+            <a href="/buku/{{ $bk->slug }}" class="text-decoration-none">Baca lebih banyak..</a>
         </article>
-    @endforeach   
+     @endforeach   
+@else
+    <p class="text-center fs-4">No post found.</p>
+@endif
+
+
 @endsection
 
