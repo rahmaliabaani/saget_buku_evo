@@ -1,10 +1,14 @@
 <?php
 
 use App\Models\Buku;
+use App\Models\User;
 use App\Models\Kategori;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
-use App\Models\User;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +63,7 @@ Route::get('/buku', [BukuController::class, 'index']);
 // Route Halaman PerBuku
 Route::get('buku/{post:slug}', [BukuController::class, 'show']);
 
+
 Route::get('/penulis/{penulis:username}', function(User $penulis) {
     return view('buku', [
         'title' => "Penulis Resensi : $penulis->name",
@@ -67,3 +72,26 @@ Route::get('/penulis/{penulis:username}', function(User $penulis) {
     ]);
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Auth::routes();
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/masuk',[App\Http\Controllers\Auth\LoginController::class, 'index']);
+
+Route::get('/beranda', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
