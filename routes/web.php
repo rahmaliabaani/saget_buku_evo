@@ -23,3 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/buku', [App\Http\Controllers\BukuController::class, 'index']);
+
+Route::get('buku/{post:slug}', [App\Http\Controllers\BukuController::class, 'show']);
