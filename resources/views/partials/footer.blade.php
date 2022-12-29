@@ -1,0 +1,1 @@
+<footer class="text-bg-dark text-center p-2">&copy;Saget 2022 | Praktikum Web</footer>
