@@ -50,6 +50,14 @@ Route::get('/kategori/{kategori:slug}', function(Kategori $kategori) {
     ]);
 });
 
+Route::group(['middleware' => 'isAdmin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
+    Route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);
+    Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -57,6 +65,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/buku', [App\Http\Controllers\BukuController::class, 'index']);
 
 Route::get('buku/{post:slug}', [App\Http\Controllers\BukuController::class, 'show']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
