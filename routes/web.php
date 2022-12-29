@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +24,32 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/info', function() {
+    return view('info', [
+        "title" => 'Info',
+        "active" => 'info',
+        'gambar' => 'farhan.jpg',
+        'informasi' => User::all()
+    ]);
+});
+
+
+Route::get('/kategori', function() {
+    return view('kategoris', [
+        'title' => 'Kategori Buku',
+        'active' => 'kategori'
+    ]);
+});
+
+// Route PerKategori Buku
+Route::get('/kategori/{kategori:slug}', function(Kategori $kategori) {
+    return view('buku', [
+        'title' => "Kategori Buku : $kategori->nama",
+        'posts' => $kategori->buku->load('penulis', 'kategori'),
+        'active' => 'kategori',
+    ]);
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -27,3 +57,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/buku', [App\Http\Controllers\BukuController::class, 'index']);
 
 Route::get('buku/{post:slug}', [App\Http\Controllers\BukuController::class, 'show']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
