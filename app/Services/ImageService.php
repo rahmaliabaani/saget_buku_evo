@@ -9,7 +9,7 @@ class ImageService
 {
     use ImageUploadTrait;
 
-    public function storeProductImages($images, $product, $i = 1)
+    public function storeBukuImages($images, $product, $i = 1)
     {
         foreach ($images as $image) {
             $product->media()->create([

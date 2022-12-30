@@ -56,6 +56,9 @@ Route::group(['middleware' => 'isAdmin', 'prefix' => 'admin', 'as' => 'admin.'],
     Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('bukus', \App\Http\Controllers\Admin\BukuController::class);
+    Route::post('/bukus/remove-image', [\App\Http\Controllers\Admin\ProductController::class, 'removeImage'])->name('bukus.removeImage');
+        Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
 });
 
 Auth::routes();
