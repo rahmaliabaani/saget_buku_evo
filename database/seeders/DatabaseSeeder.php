@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Surya Putra Pratama',
             'username' => 'surya',
             'email' => '203040065@mail.unpas.ac.id',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('1234567890'),
             'gambar' => 'surya.png'
         ]);
 
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Farhan Alfauzi',
             'username' => 'farhan',
             'email' => '203040085@mail.unpas.ac.id',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('123451234567890'),
             'gambar' => 'farhan.jpg'
         ]);
 
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Hamzah Hadi Permana',
             'username' => 'hamzah',
             'email' => '203040087@mail.unpas.ac.id',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('1234567890'),
             'gambar' => 'hamzah.png'
         ]);
 

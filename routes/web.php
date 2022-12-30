@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardPostContoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,8 +90,13 @@ Route::get('/penulis/{penulis:username}', function(User $penulis) {
 
 Auth::routes();
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard',function(){
+    return view('dashboard.index');
+})->middleware('auth');
 
-Route::get('/masuk',[App\Http\Controllers\Auth\LoginController::class, 'index']);
+Route::get('/masuk',[App\Http\Controllers\Auth\LoginController::class, 'index'])->middleware('guest');
 
 Route::get('/beranda', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/dashboard/posts/checkSlug', [DashboardPostContoller::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/posts', DashboardPostContoller::class)->middleware('auth');
