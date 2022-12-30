@@ -9,13 +9,15 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -40,13 +42,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Daftar') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -55,10 +57,9 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                <div class="dropdown-menu dropdown-menu-end" >
+                                    <a class="dropdown-item" href="#"
+                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

@@ -19,12 +19,15 @@ class StoreUserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function rules()
     {
         return [
-            'title' => 'required'
+            'name'     => ['required'],
+            'email'    => ['required','unique:users',],
+            'roles.*'  => ['integer',],
+            'roles'    => ['required','array',],
         ];
     }
 }

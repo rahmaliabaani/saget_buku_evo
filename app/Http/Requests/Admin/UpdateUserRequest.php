@@ -13,18 +13,31 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function rules()
     {
         return [
-            //
+            'name'    => [
+                'required',
+            ],
+            'email'   => [
+                'required',
+                'unique:users,email,' . request()->route('user')->id,
+            ],
+            'roles.*' => [
+                'integer',
+            ],
+            'roles'   => [
+                'required',
+                'array',
+            ],
         ];
     }
 }

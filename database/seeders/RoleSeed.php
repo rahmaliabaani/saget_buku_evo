@@ -17,9 +17,8 @@ class RoleSeed extends Seeder
         $roles = [
             [
                 'id'    => 1,
-                'title' => 'Admin',
+                'title' => 'admin',
             ],
-
             [
                 'id'    => 2,
                 'title' => 'user',

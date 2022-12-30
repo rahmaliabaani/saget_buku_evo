@@ -10,7 +10,6 @@
     <meta name="author" content="">
 
     <title>Admin Page</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/logo_title.png') }}">
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -22,6 +21,7 @@
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/vendor/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/bootstrap-datepicker3.min.css') }}">
     @stack('style-alt')
 </head>
 
@@ -98,7 +98,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Barbatos &copy; 2022</span>
+                        <span>Copyright &copy; Sb-Admin</span>
                     </div>
                 </div>
             </footer>
